@@ -22,7 +22,43 @@ terraform init
 module "ansible" {
   source = "cktf/ansible/module"
 
-  name = "mycluster"
+  groups = {
+    all = {
+      vars = {
+        myKey = "myValue"
+      }
+    }
+  }
+
+  hosts = {
+    "server-1" = {
+      groups = ["all"]
+      connection = {
+        host        = "1.1.1.1"
+        user        = "root"
+        private_key = "<REDACTED>"
+      }
+    }
+    "server-2" = {
+      groups = ["all"]
+      connection = {
+        host        = "2.2.2.2"
+        user        = "root"
+        private_key = "<REDACTED>"
+      }
+    }
+    "server-3" = {
+      groups = ["all"]
+      connection = {
+        host        = "3.3.3.3"
+        user        = "root"
+        private_key = "<REDACTED>"
+      }
+    }
+  }
+
+  playbook   = "create.yml"
+  extra_args = "-vvv"
 }
 ```
 

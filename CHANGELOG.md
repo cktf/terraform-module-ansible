@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cktf/terraform-module-ansible/compare/1.1.0...1.2.0) (2024-09-21)
+
+
+### Features
+
+* add LICENSE.md ([f678cb1](https://github.com/cktf/terraform-module-ansible/commit/f678cb1480b7cec14e9dca2bf2eed2a1e6eb689a))
+
 # [1.1.0](https://github.com/cktf/terraform-module-ansible/compare/1.0.1...1.1.0) (2024-09-21)
 
 

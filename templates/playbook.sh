@@ -96,7 +96,7 @@ ${key}:
 %{ endfor ~}
 EOF
 
-# ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}; CODE=$?
+ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}; CODE=$?
 
-# rm -Rf $ROOT
-# exit $CODE
+rm -Rf $ROOT
+exit $CODE

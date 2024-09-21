@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/cktf/terraform-module-ansible/compare/1.0.0...1.0.1) (2024-09-21)
+
+
+### Bug Fixes
+
+* change ssh ProxyCommand ([094095b](https://github.com/cktf/terraform-module-ansible/commit/094095b84efbaf3bdd820f18d87ba5d5a05f0bee))
+
 # 1.0.0 (2024-09-21)
 
 

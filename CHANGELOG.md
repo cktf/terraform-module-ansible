@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/cktf/terraform-module-ansible/compare/1.0.1...1.1.0) (2024-09-21)
+
+
+### Features
+
+* change README ([261ca9c](https://github.com/cktf/terraform-module-ansible/commit/261ca9c530c6930cc98551b5935dceccfdffb0db))
+
 ## [1.0.1](https://github.com/cktf/terraform-module-ansible/compare/1.0.0...1.0.1) (2024-09-21)
 
 

@@ -67,7 +67,7 @@ ${key}:
             ansible_ssh_extra_args: "-o CertificateFile=$ROOT/${sha256(host.connection.certificate)}.crt"
             %{~ endif ~}
             %{~ if can(host.connection.bastion_host) ~}
-            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}:${host.connection.bastion_host} -o StrictHostKeyChecking=${can(host.connection.bastion_host_key) ? "yes" : "no"} -p ${host.connection.bastion_port} -i ${sha256(host.connection.bastion_private_key)} -o CertificateFile=${sha256(host.connection.bastion_certificate)}\""
+            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}@${host.connection.bastion_host} -o StrictHostKeyChecking=${can(host.connection.bastion_host_key) ? "yes" : "no"} -p ${host.connection.bastion_port} ${can(host.connection.bastion_private_key) ? "-i $ROOT/${sha256(host.connection.bastion_private_key)}.key" : ""} ${can(host.connection.bastion_certificate) ? "-o CertificateFile=$ROOT/${sha256(host.connection.bastion_certificate)}.crt" : ""}\""
             %{~ else ~}
             %{~ if can(host.connection.proxy_host) ~}
             ansible_ssh_common_args: "-o ProxyCommand=\"nc --proxy-type=${host.connection.proxy_scheme} --proxy-auth=${host.connection.proxy_user_name}:${host.connection.proxy_user_password} --proxy=${host.connection.proxy_host}:${host.connection.proxy_port} %h %p\""

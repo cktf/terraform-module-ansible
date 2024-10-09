@@ -34,7 +34,7 @@ module "ansible" {
     server-1 = {
       groups = ["all"]
       connection = {
-        host        = "1.1.1.1"
+        host        = "192.168.1.10"
         user        = "root"
         private_key = "<REDACTED>"
       }
@@ -42,7 +42,7 @@ module "ansible" {
     server-2 = {
       groups = ["all"]
       connection = {
-        host        = "2.2.2.2"
+        host        = "192.168.1.11"
         user        = "root"
         private_key = "<REDACTED>"
       }
@@ -50,7 +50,7 @@ module "ansible" {
     server-3 = {
       groups = ["all"]
       connection = {
-        host        = "3.3.3.3"
+        host        = "192.168.1.12"
         user        = "root"
         private_key = "<REDACTED>"
       }

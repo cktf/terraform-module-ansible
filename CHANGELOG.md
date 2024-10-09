@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/cktf/terraform-module-ansible/compare/1.2.0...1.3.0) (2024-10-09)
+
+
+### Bug Fixes
+
+* upgrade CI/CD ([632ee58](https://github.com/cktf/terraform-module-ansible/commit/632ee5825ce28e740a809498aa80109e86d0c0d4))
+
+
+### Features
+
+* change README ([a235dae](https://github.com/cktf/terraform-module-ansible/commit/a235dae3be86cd9e4792dd91afade904510d4742))
+
 ## [1.2.1](https://github.com/cktf/terraform-module-ansible/compare/1.2.0...1.2.1) (2024-10-09)
 
 

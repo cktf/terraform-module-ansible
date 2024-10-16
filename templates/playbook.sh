@@ -31,6 +31,9 @@ EOF
 %{ endif ~}
 %{ endfor ~}
 
+chmod -f 644 $ROOT/*.crt || :
+chmod -f 600 $ROOT/*.key || :
+
 cat <<-EOF | tee $ROOT/inventory.yml > /dev/null
 %{ for key, group in groups ~}
 ${key}:

@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/cktf/terraform-module-ansible/compare/1.3.1...1.4.0) (2024-10-16)
+
+
+### Features
+
+* change key, crt permissions ([cb16bfa](https://github.com/cktf/terraform-module-ansible/commit/cb16bfa34a75be6d997731e25ce431eda37127fb))
+
 ## [1.3.1](https://github.com/cktf/terraform-module-ansible/compare/1.3.0...1.3.1) (2024-10-16)
 
 

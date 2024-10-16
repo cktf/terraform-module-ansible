@@ -4,27 +4,27 @@ export ROOT=/tmp/ansible_$(date +%s)
 mkdir -p $ROOT
 
 %{ for key, val in hosts ~}
-%{ if can(val.connection.cacert) ~}
+%{ if try(val.connection.cacert, null) != null ~}
 cat <<-EOF | tee $ROOT/${sha256(val.connection.cacert)}.crt > /dev/null
 ${val.connection.cacert}
 EOF
 %{ endif ~}
-%{ if can(val.connection.private_key) ~}
+%{ if try(val.connection.private_key, null) != null ~}
 cat <<-EOF | tee $ROOT/${sha256(val.connection.private_key)}.key > /dev/null
 ${val.connection.private_key}
 EOF
 %{ endif ~}
-%{ if can(val.connection.certificate) ~}
+%{ if try(val.connection.certificate, null) != null ~}
 cat <<-EOF | tee $ROOT/${sha256(val.connection.certificate)}.key > /dev/null
 ${val.connection.certificate}
 EOF
 %{ endif ~}
-%{ if can(val.connection.bastion_private_key) ~}
+%{ if try(val.connection.bastion_private_key, null) != null ~}
 cat <<-EOF | tee $ROOT/${sha256(val.connection.bastion_private_key)}.key > /dev/null
 ${val.connection.bastion_private_key}
 EOF
 %{ endif ~}
-%{ if can(val.connection.bastion_certificate) ~}
+%{ if try(val.connection.bastion_certificate, null) != null ~}
 cat <<-EOF | tee $ROOT/${sha256(val.connection.bastion_certificate)}.key > /dev/null
 ${val.connection.bastion_certificate}
 EOF
@@ -40,53 +40,53 @@ ${key}:
         %{~ for hkey, host in hosts ~}
         %{~ if contains(host.groups, key) ~}
         ${hkey}:
-            %{~ if can(host.connection.type) ~}
+            %{~ if try(host.connection.type, null) != null ~}
             ansible_connection: "${host.connection.type}"
             %{~ endif ~}
-            %{~ if can(host.connection.host) ~}
+            %{~ if try(host.connection.host, null) != null ~}
             ansible_host: "${host.connection.host}"
             %{~ endif ~}
-            %{~ if can(host.connection.host_key) ~}
+            %{~ if try(host.connection.host_key, null) != null ~}
             ansible_host_key_checking: "true"
             %{~ else ~}
             ansible_host_key_checking: "false"
             %{~ endif ~}
-            %{~ if can(host.connection.port) ~}
+            %{~ if try(host.connection.port, null) != null ~}
             ansible_port: "${host.connection.port}"
             %{~ endif ~}
-            %{~ if can(host.connection.user) ~}
+            %{~ if try(host.connection.user, null) != null ~}
             ansible_user: "${host.connection.user}"
             %{~ endif ~}
-            %{~ if can(host.connection.password) ~}
+            %{~ if try(host.connection.password, null) != null ~}
             ansible_password: "${host.connection.password}"
             %{~ endif ~}
-            %{~ if can(host.connection.private_key) ~}
+            %{~ if try(host.connection.private_key, null) != null ~}
             ansible_private_key_file: "$ROOT/${sha256(host.connection.private_key)}.key"
             %{~ endif ~}
-            %{~ if can(host.connection.certificate) ~}
+            %{~ if try(host.connection.certificate, null) != null ~}
             ansible_ssh_extra_args: "-o CertificateFile=$ROOT/${sha256(host.connection.certificate)}.crt"
             %{~ endif ~}
-            %{~ if can(host.connection.bastion_host) ~}
-            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}@${host.connection.bastion_host} -o StrictHostKeyChecking=${can(host.connection.bastion_host_key) ? "yes" : "no"} -p ${host.connection.bastion_port} ${can(host.connection.bastion_private_key) ? "-i $ROOT/${sha256(host.connection.bastion_private_key)}.key" : ""} ${can(host.connection.bastion_certificate) ? "-o CertificateFile=$ROOT/${sha256(host.connection.bastion_certificate)}.crt" : ""}\""
+            %{~ if try(host.connection.bastion_host, null) != null ~}
+            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}@${host.connection.bastion_host} -o StrictHostKeyChecking=${(try(host.connection.bastion_host_key, null) != null) ? "yes" : "no"} -p ${host.connection.bastion_port} ${(try(host.connection.bastion_private_key, null) != null) ? "-i $ROOT/${sha256(host.connection.bastion_private_key)}.key" : ""} ${(try(host.connection.bastion_certificate, null) != null) ? "-o CertificateFile=$ROOT/${sha256(host.connection.bastion_certificate)}.crt" : ""}\""
             %{~ else ~}
-            %{~ if can(host.connection.proxy_host) ~}
+            %{~ if try(host.connection.proxy_host, null) != null ~}
             ansible_ssh_common_args: "-o ProxyCommand=\"nc --proxy-type=${host.connection.proxy_scheme} --proxy-auth=${host.connection.proxy_user_name}:${host.connection.proxy_user_password} --proxy=${host.connection.proxy_host}:${host.connection.proxy_port} %h %p\""
             %{~ endif ~}
             %{~ endif ~}
-            %{~ if can(host.connection.timeout) ~}
+            %{~ if try(host.connection.timeout, null) != null ~}
             ansible_ssh_timeout: "${replace(host.connection.timeout, "m", "")}"
             ansible_winrm_connection_timeout: "${replace(host.connection.timeout, "m", "")}"
             %{~ endif ~}
-            %{~ if can(host.connection.https) ~}
+            %{~ if try(host.connection.https, null) != null ~}
             ansible_winrm_scheme: "${host.connection.https ? "https" : "http"}"
             %{~ endif ~}
-            %{~ if can(host.connection.use_ntlm) ~}
+            %{~ if try(host.connection.use_ntlm, null) != null ~}
             ansible_winrm_transport: "${host.connection.use_ntlm ? "ntlm" : "basic"}"
             %{~ endif ~}
-            %{~ if can(host.connection.insecure) ~}
+            %{~ if try(host.connection.insecure, null) != null ~}
             ansible_winrm_server_cert_validation: "${host.connection.insecure ? "ignore" : "validate"}"
             %{~ endif ~}
-            %{~ if can(host.connection.cacert) ~}
+            %{~ if try(host.connection.cacert, null) != null ~}
             ansible_winrm_ca_trust_path: "$ROOT/${sha256(host.connection.cacert)}.crt"
             %{~ endif ~}
         %{~ endif ~}

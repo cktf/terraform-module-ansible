@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/cktf/terraform-module-ansible/compare/1.4.0...1.5.0) (2024-11-11)
+
+
+### Features
+
+* add UserKnownHostsFile ssh flag ([1de444c](https://github.com/cktf/terraform-module-ansible/commit/1de444c5d358d6ae12562a5058cffa0dd1aed66a))
+
 # [1.4.0](https://github.com/cktf/terraform-module-ansible/compare/1.3.1...1.4.0) (2024-10-16)
 
 

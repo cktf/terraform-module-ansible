@@ -70,7 +70,7 @@ ${key}:
             ansible_ssh_extra_args: "-o CertificateFile=$ROOT/${sha256(host.connection.certificate)}.crt"
             %{~ endif ~}
             %{~ if try(host.connection.bastion_host, null) != null ~}
-            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}@${host.connection.bastion_host} -o StrictHostKeyChecking=${(try(host.connection.bastion_host_key, null) != null) ? "yes" : "no"} -p ${host.connection.bastion_port} ${(try(host.connection.bastion_private_key, null) != null) ? "-i $ROOT/${sha256(host.connection.bastion_private_key)}.key" : ""} ${(try(host.connection.bastion_certificate, null) != null) ? "-o CertificateFile=$ROOT/${sha256(host.connection.bastion_certificate)}.crt" : ""}\""
+            ansible_ssh_common_args: "-o ProxyCommand=\"ssh -W %h:%p ${host.connection.bastion_user}@${host.connection.bastion_host} -o StrictHostKeyChecking=${(try(host.connection.bastion_host_key, null) != null) ? "yes" : "no"} -o UserKnownHostsFile=/dev/null -p ${host.connection.bastion_port} ${(try(host.connection.bastion_private_key, null) != null) ? "-i $ROOT/${sha256(host.connection.bastion_private_key)}.key" : ""} ${(try(host.connection.bastion_certificate, null) != null) ? "-o CertificateFile=$ROOT/${sha256(host.connection.bastion_certificate)}.crt" : ""}\""
             %{~ else ~}
             %{~ if try(host.connection.proxy_host, null) != null ~}
             ansible_ssh_common_args: "-o ProxyCommand=\"nc --proxy-type=${host.connection.proxy_scheme} --proxy-auth=${host.connection.proxy_user_name}:${host.connection.proxy_user_password} --proxy=${host.connection.proxy_host}:${host.connection.proxy_port} %h %p\""

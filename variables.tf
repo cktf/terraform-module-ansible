@@ -26,16 +26,30 @@ variable "hosts" {
   description = "Ansible Hosts"
 }
 
-variable "playbook" {
+variable "create_playbook" {
   type        = string
   default     = ""
   sensitive   = false
-  description = "Ansible Playbook"
+  description = "Ansible Create Playbook"
 }
 
-variable "extra_args" {
+variable "create_extra_args" {
   type        = string
   default     = ""
   sensitive   = false
-  description = "Ansible Extra Args"
+  description = "Ansible Create Extra Args"
+}
+
+variable "destroy_playbook" {
+  type        = string
+  default     = ""
+  sensitive   = false
+  description = "Ansible Destroy Playbook"
+}
+
+variable "destroy_extra_args" {
+  type        = string
+  default     = ""
+  sensitive   = false
+  description = "Ansible Destroy Extra Args"
 }

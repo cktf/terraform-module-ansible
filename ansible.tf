@@ -13,6 +13,7 @@ resource "terraform_data" "this" {
   })
 
   provisioner "local-exec" {
+    quiet   = true
     command = "echo ${base64encode(local.script)} | base64 -d | bash"
   }
 }

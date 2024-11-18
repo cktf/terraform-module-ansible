@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/cktf/terraform-module-ansible/compare/1.5.0...1.6.0) (2024-11-18)
+
+
+### Features
+
+* enable quite mode in local-exec ([891f3f3](https://github.com/cktf/terraform-module-ansible/commit/891f3f3e1034ac731b826386383a9c979fb2e323))
+
 # [1.5.0](https://github.com/cktf/terraform-module-ansible/compare/1.4.0...1.5.0) (2024-11-11)
 
 

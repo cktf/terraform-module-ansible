@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/cktf/terraform-module-ansible/compare/1.6.0...2.0.0) (2024-11-18)
+
+
+### Features
+
+* add destroy time playbook ([6f4ab5f](https://github.com/cktf/terraform-module-ansible/commit/6f4ab5fd59cf4f4b6dc3405f8d2ca3c1a9ec5717))
+
+
+### BREAKING CHANGES
+
+* change variables
+
 # [1.6.0](https://github.com/cktf/terraform-module-ansible/compare/1.5.0...1.6.0) (2024-11-18)
 
 

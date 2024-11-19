@@ -57,8 +57,8 @@ module "ansible" {
     }
   }
 
-  playbook   = "create.yml"
-  extra_args = "-vvv"
+  create_playbook   = "create.yml"
+  create_extra_args = "-vvv"
 }
 ```
 

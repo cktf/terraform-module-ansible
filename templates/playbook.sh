@@ -1,5 +1,6 @@
 #!/bin/bash
 
+%{ if playbook != "" ~}
 export ROOT=/tmp/ansible_$(date +%s)
 mkdir -p $ROOT
 
@@ -99,10 +100,5 @@ ${key}:
 %{ endfor ~}
 EOF
 
-%{ if playbook != "" ~}
 ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}
-%{ else ~}
-CODE=0
 %{ endif ~}
-
-rm -Rf $ROOT

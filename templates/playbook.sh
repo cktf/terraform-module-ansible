@@ -103,5 +103,5 @@ ${key}:
 %{ endfor ~}
 EOF
 
-ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}
+ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook} && rm -Rf $ROOT
 %{ endif ~}

@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/cktf/terraform-module-ansible/compare/2.0.0...2.0.1) (2024-11-26)
+
+
+### Bug Fixes
+
+* disable ROOT remove on playbook errors ([42a0ff3](https://github.com/cktf/terraform-module-ansible/commit/42a0ff35bdc0a167eb3ca1be01068a6545a153f3))
+
 # [2.0.0](https://github.com/cktf/terraform-module-ansible/compare/1.6.0...2.0.0) (2024-11-18)
 
 

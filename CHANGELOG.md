@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/cktf/terraform-module-ansible/compare/2.3.0...2.4.0) (2024-11-26)
+
+
+### Features
+
+* remove inventory directory on successful playbook ([da95780](https://github.com/cktf/terraform-module-ansible/commit/da9578035b96a9a24cfc2f5fcf21ca908493afba))
+
 # [2.3.0](https://github.com/cktf/terraform-module-ansible/compare/2.2.0...2.3.0) (2024-11-26)
 
 

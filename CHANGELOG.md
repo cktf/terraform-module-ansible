@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/cktf/terraform-module-ansible/compare/2.2.0...2.3.0) (2024-11-26)
+
+
+### Features
+
+* add nanosecond to ansible inventory folder name ([63fc51e](https://github.com/cktf/terraform-module-ansible/commit/63fc51e78a48268da611c8b5a3cb587622395552))
+
 # [2.2.0](https://github.com/cktf/terraform-module-ansible/compare/2.1.0...2.2.0) (2024-11-26)
 
 

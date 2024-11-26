@@ -1,3 +1,11 @@
+# [2.1.0](https://github.com/cktf/terraform-module-ansible/compare/2.0.1...2.1.0) (2024-11-26)
+
+
+### Features
+
+* add host vars ([8655ce7](https://github.com/cktf/terraform-module-ansible/commit/8655ce7e2396c4c4eb676a4adc7e2e206765f62b))
+* disable inventory removal ([582678c](https://github.com/cktf/terraform-module-ansible/commit/582678c0583ee70dea7bb4b2eb316069699d0268))
+
 ## [2.0.1](https://github.com/cktf/terraform-module-ansible/compare/2.0.0...2.0.1) (2024-11-26)
 
 

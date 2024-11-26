@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/cktf/terraform-module-ansible/compare/2.1.0...2.2.0) (2024-11-26)
+
+
+### Features
+
+* add optional host vars ([3f85a48](https://github.com/cktf/terraform-module-ansible/commit/3f85a4825aab75838fd0bc59b2e08f60e50c75ef))
+
 # [2.1.0](https://github.com/cktf/terraform-module-ansible/compare/2.0.1...2.1.0) (2024-11-26)
 
 

@@ -44,7 +44,9 @@ ${key}:
         %{~ for hkey, host in hosts ~}
         %{~ if contains(host.groups, key) ~}
         ${hkey}:
+            %{~ if try(host.vars, {}) != {} ~}
             ${indent(12, yamlencode(host.vars))}
+            %{~ endif ~}
             %{~ if try(host.connection.type, null) != null ~}
             ansible_connection: "${host.connection.type}"
             %{~ endif ~}

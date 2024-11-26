@@ -100,10 +100,9 @@ ${key}:
 EOF
 
 %{ if playbook != "" ~}
-ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}; CODE=$?
+ansible-playbook -i $ROOT/inventory.yml ${extra_args} ${playbook}
 %{ else ~}
 CODE=0
 %{ endif ~}
 
 rm -Rf $ROOT
-exit $CODE

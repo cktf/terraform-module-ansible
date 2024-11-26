@@ -1,7 +1,7 @@
 #!/bin/bash
 
 %{ if playbook != "" ~}
-export ROOT=/tmp/ansible_$(date +%s)
+export ROOT=/tmp/ansible_$(date +%s%N)
 mkdir -p $ROOT
 
 %{ for key, val in hosts ~}

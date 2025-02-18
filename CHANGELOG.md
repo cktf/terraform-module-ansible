@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/cktf/terraform-module-ansible/compare/2.4.0...2.5.0) (2025-02-18)
+
+
+### Features
+
+* replace date with mktemp ([8293207](https://github.com/cktf/terraform-module-ansible/commit/8293207fbf963642434144391c5f2a5c775c0c30))
+
 # [2.4.0](https://github.com/cktf/terraform-module-ansible/compare/2.3.0...2.4.0) (2024-11-26)
 
 

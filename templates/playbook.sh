@@ -1,8 +1,7 @@
 #!/bin/bash
 
 %{ if playbook != "" ~}
-export ROOT=/tmp/ansible_$(date +%s%N)
-mkdir -p $ROOT
+export ROOT=$(mktemp -d)
 
 %{ for key, val in hosts ~}
 %{ if try(val.connection.cacert, null) != null ~}

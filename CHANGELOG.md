@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/cktf/terraform-module-ansible/compare/2.5.0...2.6.0) (2025-02-22)
+
+
+### Features
+
+* add new CI ([bc45e78](https://github.com/cktf/terraform-module-ansible/commit/bc45e785f69d3d1753f72068126e27b05e958633))
+
 # [2.5.0](https://github.com/cktf/terraform-module-ansible/compare/2.4.0...2.5.0) (2025-02-18)
 
 

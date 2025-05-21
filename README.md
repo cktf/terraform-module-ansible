@@ -1,6 +1,6 @@
 # Terraform Module Ansible
 
-![pipeline](https://github.com/cktf/terraform-module-ansible/actions/workflows/cicd.yml/badge.svg)
+![pipeline](https://github.com/cktf/terraform-module-ansible/actions/workflows/ci.yml/badge.svg)
 ![release](https://img.shields.io/github/v/release/cktf/terraform-module-ansible?display_name=tag)
 ![license](https://img.shields.io/github/license/cktf/terraform-module-ansible)
 

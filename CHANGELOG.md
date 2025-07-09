@@ -1,3 +1,15 @@
+# [2.7.0](https://github.com/cktf/terraform-module-ansible/compare/2.6.0...2.7.0) (2025-07-09)
+
+
+### Bug Fixes
+
+* restore empty terraform lock file ([0b1ac12](https://github.com/cktf/terraform-module-ansible/commit/0b1ac127e5024cc0375ffd11b9dfbb912005fe7d))
+
+
+### Features
+
+* add nonsensitive to show local-exec output ([0c89799](https://github.com/cktf/terraform-module-ansible/commit/0c897992a5ce44ab2cab2c0e3cc49bb864d318de))
+
 # [2.6.0](https://github.com/cktf/terraform-module-ansible/compare/2.5.0...2.6.0) (2025-02-22)
 
 

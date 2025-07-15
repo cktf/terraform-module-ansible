@@ -7,8 +7,8 @@ variable "triggers" {
 
 variable "groups" {
   type = map(object({
-    vars     = optional(any, {})
-    children = optional(list(string), [])
+    vars   = optional(any, {})
+    groups = optional(list(string), [])
   }))
   default     = {}
   sensitive   = false
@@ -18,7 +18,7 @@ variable "groups" {
 variable "hosts" {
   type = map(object({
     vars       = optional(any, {})
-    groups     = list(string)
+    groups     = optional(list(string), [])
     connection = any
   }))
   default     = {}

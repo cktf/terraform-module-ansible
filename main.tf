@@ -5,8 +5,8 @@ terraform {
 
 resource "terraform_data" "this" {
   triggers_replace = merge(var.triggers, {
-    hosts              = var.hosts
-    groups             = var.groups
+    hosts              = { for key, val in var.hosts : key => merge(val, { groups = coalescelist(val.groups, ["ungrouped"]) }) }
+    groups             = merge({ ungrouped = {} }, var.groups)
     create_playbook    = var.create_playbook
     create_extra_args  = var.create_extra_args
     destroy_playbook   = var.destroy_playbook

@@ -15,7 +15,7 @@ ${val.connection.private_key}
 EOF
 %{ endif ~}
 %{ if try(val.connection.certificate, null) != null ~}
-cat <<-EOF | tee $ROOT/${sha256(val.connection.certificate)}.key > /dev/null
+cat <<-EOF | tee $ROOT/${sha256(val.connection.certificate)}.crt > /dev/null
 ${val.connection.certificate}
 EOF
 %{ endif ~}
@@ -25,7 +25,7 @@ ${val.connection.bastion_private_key}
 EOF
 %{ endif ~}
 %{ if try(val.connection.bastion_certificate, null) != null ~}
-cat <<-EOF | tee $ROOT/${sha256(val.connection.bastion_certificate)}.key > /dev/null
+cat <<-EOF | tee $ROOT/${sha256(val.connection.bastion_certificate)}.crt > /dev/null
 ${val.connection.bastion_certificate}
 EOF
 %{ endif ~}
@@ -35,13 +35,15 @@ chmod -f 644 $ROOT/*.crt || :
 chmod -f 600 $ROOT/*.key || :
 
 cat <<-EOF | tee $ROOT/inventory.yml > /dev/null
-%{ for key, group in groups ~}
-${key}:
+%{ for gkey, group in groups ~}
+${gkey}:
     vars:
         ${indent(8, yamlencode(group.vars))}
+    children:
+        ${indent(8, yamlencode({for item in group.groups : item => {}}))}
     hosts:
         %{~ for hkey, host in hosts ~}
-        %{~ if contains(host.groups, key) ~}
+        %{~ if contains(host.groups, gkey) ~}
         ${hkey}:
             %{~ if try(host.vars, {}) != {} ~}
             ${indent(12, yamlencode(host.vars))}
@@ -86,19 +88,17 @@ ${key}:
             %{~ if try(host.connection.https, null) != null ~}
             ansible_winrm_scheme: "${host.connection.https ? "https" : "http"}"
             %{~ endif ~}
-            %{~ if try(host.connection.use_ntlm, null) != null ~}
-            ansible_winrm_transport: "${host.connection.use_ntlm ? "ntlm" : "basic"}"
-            %{~ endif ~}
             %{~ if try(host.connection.insecure, null) != null ~}
             ansible_winrm_server_cert_validation: "${host.connection.insecure ? "ignore" : "validate"}"
+            %{~ endif ~}
+            %{~ if try(host.connection.use_ntlm, null) != null ~}
+            ansible_winrm_transport: "${host.connection.use_ntlm ? "ntlm" : "basic"}"
             %{~ endif ~}
             %{~ if try(host.connection.cacert, null) != null ~}
             ansible_winrm_ca_trust_path: "$ROOT/${sha256(host.connection.cacert)}.crt"
             %{~ endif ~}
         %{~ endif ~}
         %{~ endfor ~}
-    children:
-        ${indent(8, yamlencode({for group in group.children : group => {}}))}
 %{ endfor ~}
 EOF
 

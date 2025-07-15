@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/cktf/terraform-module-ansible/compare/2.8.0...2.8.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* add empty vars, groups to ungrouped group ([9a84204](https://github.com/cktf/terraform-module-ansible/commit/9a84204a4977d6ff66cd0a888ffb29789c040b7f))
+
 # [2.8.0](https://github.com/cktf/terraform-module-ansible/compare/2.7.0...2.8.0) (2025-07-15)
 
 

@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/cktf/terraform-module-ansible/compare/2.7.0...2.8.0) (2025-07-15)
+
+
+### Features
+
+* add ungrouped default group ([2b714d5](https://github.com/cktf/terraform-module-ansible/commit/2b714d5c4856b21e76fb425ae7edb3e04441b2d7))
+
 # [2.7.0](https://github.com/cktf/terraform-module-ansible/compare/2.6.0...2.7.0) (2025-07-09)
 
 

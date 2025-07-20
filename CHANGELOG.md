@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/cktf/terraform-module-ansible/compare/2.8.1...3.0.0) (2025-07-20)
+
+
+### Features
+
+* add playbook hash triggers_replace ([a837023](https://github.com/cktf/terraform-module-ansible/commit/a8370234c4c5ea7f3ea077d3e32c8b29a9a56b3b))
+
+
+### BREAKING CHANGES
+
+* merge create, destroy playbook args
+
 ## [2.8.1](https://github.com/cktf/terraform-module-ansible/compare/2.8.0...2.8.1) (2025-07-15)
 
 

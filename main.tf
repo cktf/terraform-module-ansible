@@ -5,12 +5,12 @@ terraform {
 
 resource "terraform_data" "this" {
   triggers_replace = merge(var.triggers, {
-    hosts              = { for key, val in var.hosts : key => merge(val, { groups = coalescelist(val.groups, ["ungrouped"]) }) }
-    groups             = merge({ ungrouped = { vars = {}, groups = [] } }, var.groups)
-    create_playbook    = var.create_playbook
-    create_extra_args  = var.create_extra_args
-    destroy_playbook   = var.destroy_playbook
-    destroy_extra_args = var.destroy_extra_args
+    hash         = try(filemd5(var.playbook), md5(join("", [for f in fileset(var.playbook, "**") : filemd5("${var.playbook}/${f}") if !startswith(f, ".")])))
+    hosts        = { for key, val in var.hosts : key => merge(val, { groups = coalescelist(val.groups, ["ungrouped"]) }) }
+    groups       = merge({ ungrouped = { vars = {}, groups = [] } }, var.groups)
+    playbook     = can(regex(".*\\.ya?ml$", var.playbook)) ? var.playbook : "${var.playbook}/main.yml"
+    create_args  = var.create_args
+    destroy_args = var.destroy_args
   })
 
   provisioner "local-exec" {
@@ -21,8 +21,8 @@ resource "terraform_data" "this" {
       SCRIPT = nonsensitive(base64encode(templatefile("${path.module}/templates/playbook.sh", {
         hosts      = self.triggers_replace.hosts
         groups     = self.triggers_replace.groups
-        playbook   = self.triggers_replace.create_playbook
-        extra_args = self.triggers_replace.create_extra_args
+        playbook   = self.triggers_replace.playbook
+        extra_args = self.triggers_replace.create_args
       })))
     }
   }
@@ -35,8 +35,8 @@ resource "terraform_data" "this" {
       SCRIPT = nonsensitive(base64encode(templatefile("${path.module}/templates/playbook.sh", {
         hosts      = self.triggers_replace.hosts
         groups     = self.triggers_replace.groups
-        playbook   = self.triggers_replace.destroy_playbook
-        extra_args = self.triggers_replace.destroy_extra_args
+        playbook   = self.triggers_replace.playbook
+        extra_args = self.triggers_replace.destroy_args
       })))
     }
   }

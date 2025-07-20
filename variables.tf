@@ -1,8 +1,12 @@
-variable "triggers" {
-  type        = any
+variable "hosts" {
+  type = map(object({
+    vars       = optional(any, {})
+    groups     = optional(list(string), [])
+    connection = any
+  }))
   default     = {}
   sensitive   = false
-  description = "Ansible Triggers"
+  description = "Ansible Hosts"
 }
 
 variable "groups" {
@@ -15,41 +19,30 @@ variable "groups" {
   description = "Ansible Groups"
 }
 
-variable "hosts" {
-  type = map(object({
-    vars       = optional(any, {})
-    groups     = optional(list(string), [])
-    connection = any
-  }))
+variable "triggers" {
+  type        = any
   default     = {}
   sensitive   = false
-  description = "Ansible Hosts"
+  description = "Ansible Triggers"
 }
 
-variable "create_playbook" {
+variable "playbook" {
+  type        = string
+  default     = null
+  sensitive   = false
+  description = "Ansible Playbook"
+}
+
+variable "create_args" {
   type        = string
   default     = ""
   sensitive   = false
-  description = "Ansible Create Playbook"
+  description = "Ansible Create Args"
 }
 
-variable "create_extra_args" {
+variable "destroy_args" {
   type        = string
-  default     = ""
+  default     = null
   sensitive   = false
-  description = "Ansible Create Extra Args"
-}
-
-variable "destroy_playbook" {
-  type        = string
-  default     = ""
-  sensitive   = false
-  description = "Ansible Destroy Playbook"
-}
-
-variable "destroy_extra_args" {
-  type        = string
-  default     = ""
-  sensitive   = false
-  description = "Ansible Destroy Extra Args"
+  description = "Ansible Destroy Args"
 }

@@ -1,8 +1,8 @@
 # Terraform Module Ansible
 
-![pipeline](https://github.com/cktf/terraform-module-ansible/actions/workflows/ci.yml/badge.svg)
-![release](https://img.shields.io/github/v/release/cktf/terraform-module-ansible?display_name=tag)
-![license](https://img.shields.io/github/license/cktf/terraform-module-ansible)
+![pipeline](https://github.com/ckoliber/terraform-module-ansible/actions/workflows/ci.yml/badge.svg)
+![release](https://img.shields.io/github/v/release/ckoliber/terraform-module-ansible?display_name=tag)
+![license](https://img.shields.io/github/license/ckoliber/terraform-module-ansible)
 
 Terraform module to generate dynamic inventory from SSH/WinRM connections and run ansible-playbook over that
 
@@ -20,7 +20,7 @@ terraform init
 
 ```hcl
 module "ansible" {
-  source = "cktf/ansible/module"
+  source = "ckoliber/ansible/module"
 
   hosts = {
     server-1 = {
